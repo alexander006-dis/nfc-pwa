@@ -15,7 +15,7 @@
     }
 
     body {
-      background-color: #FFA4A6; /* Точный розовый цвет фона */
+      background-color: #FFA4A6; /* Точный розовый цвет фона лендинга */
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
@@ -39,7 +39,7 @@
       display: block;
     }
 
-    /* Кнопка установки PWA — яркая, привлекающая внимание */
+    /* Кнопка установки PWA приложения */
     #installBtn {
       display: none;
       width: 100%;
@@ -67,15 +67,15 @@
       gap: 14px;
     }
 
-    /* Абсолютно точная копия кнопок с тильды */
+    /* Кнопки меню */
     .menu-button {
       display: flex;
       align-items: center;
-      background-color: #FFE677; /* Точный пастельно-желтый цвет кнопок */
-      color: #D6545A; /* Точный цвет текста */
+      background-color: #FFE677; /* Пастельно-желтый цвет кнопок */
+      color: #D6545A; /* Цвет текста */
       text-decoration: none;
       padding: 14px 18px;
-      border-radius: 20px; /* Фирменное скругление */
+      border-radius: 20px; /* Фирменное скругление углов */
       font-size: 16px;
       font-weight: 500;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
@@ -86,7 +86,7 @@
       transform: scale(0.98);
     }
 
-    /* Стили для круглых иконок слева */
+    /* Круглые обертки для иконок */
     .icon-wrapper {
       width: 42px;
       height: 42px;
@@ -97,17 +97,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background-color: #FFF;
-    }
-
-    /* Иконка Телеграма — кастомный розовый фон */
-    .icon-wrapper.tg-bg {
-      background-color: #FFA4A6;
-    }
-
-    /* Иконка MAX — точно как на скрине */
-    .icon-wrapper.max-bg {
-      background-color: #FFA4A6;
     }
 
     .icon-wrapper img {
@@ -115,30 +104,23 @@
       height: 100%;
       object-fit: cover;
     }
-
-    .icon-wrapper svg {
-      width: 22px;
-      height: 22px;
-      fill: #FFF;
-    }
   </style>
 </head>
 <body>
 
   <!-- Заголовок-картинка -->
   <div class="header-image-container">
-    <!-- Замените header.png на имя вашего файла с картинкой текста -->
     <img src="header.svg" alt="Тот самый кусочек, который можно!">
   </div>
 
   <!-- Кнопка добавления PWA -->
-  <button id="installBtn">✨ Добавить на рабочий стол</button>
+  <button id="installBtn">✨ Установить приложение</button>
 
-  <!-- Список кнопок -->
+  <!-- Список кнопок-ссылок -->
   <div class="links-container">
     
-    <!-- 1. О проекте (с аватаркой) -->
-    <a href="#" class="menu-button">
+    <!-- 1. О проекте -->
+    <a href="https://kusocheck.tilda.ws/about" class="menu-button">
       <div class="icon-wrapper">
         <img src="avatar.png" alt="О проекте">
       </div>
@@ -146,43 +128,33 @@
     </a>
 
     <!-- 2. Перейти в канал MAX -->
-    <a href="ССЫЛКА_НА_КАНАЛ_MAX" class="menu-button">
-      <div class="icon-wrapper max-bg">
-        <!-- SVG-копия иконки Q со скриншота -->
-        <svg viewBox="0 0 24 24" style="width:24px; height:24px;">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.31 0 4.43-.79 6.13-2.1l2.58 2.58 1.41-1.41-2.58-2.58C21.21 16.43 22 14.31 22 12 22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        </svg>
+    <a href="https://max.ru/join/kjBzdsUw-AxrClbyV6wHlF8yG3xwOyOMsel1unNcpEg" class="menu-button">
+      <div class="icon-wrapper">
+        <img src="max-icon.svg" alt="MAX">
       </div>
       <span>Перейти в канал MAX</span>
     </a>
 
     <!-- 3. Перейти в канал Telegram -->
-    <a href="ССЫЛКА_НА_КАНАЛ_ТГ" class="menu-button">
-      <div class="icon-wrapper tg-bg">
-        <!-- Нативный SVG самолетика Телеграм -->
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.53 4.36-1.8 4.85-1.8.11 0 .35.03.5.16.13.12.17.29.18.41 0 .08-.01.24-.02.32z"/>
-        </svg>
+    <a href="https://t.me/polly_cooking333" class="menu-button">
+      <div class="icon-wrapper">
+        <img src="telegram-icon.svg" alt="Telegram">
       </div>
       <span>Перейти в канал Telegram</span>
     </a>
 
     <!-- 4. Написать в MAX -->
-    <a href="ССЫЛКА_НА_ЛИЧКУ_MAX" class="menu-button">
-      <div class="icon-wrapper max-bg">
-        <svg viewBox="0 0 24 24" style="width:24px; height:24px;">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.31 0 4.43-.79 6.13-2.1l2.58 2.58 1.41-1.41-2.58-2.58C21.21 16.43 22 14.31 22 12 22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        </svg>
+    <a href="https://max.ru/u/f9LHodD0cOIpsnHNiVg0e7Ktoi40W-WrrBSPKi7OC0qfK9DxPsZQTyaP-GQ">
+      <div class="icon-wrapper">
+        <img src="max-icon.svg" alt="MAX">
       </div>
       <span>Написать в MAX</span>
     </a>
 
     <!-- 5. Написать в Telegram -->
-    <a href="ССЫЛКА_НА_ЛИЧКУ_ТГ" class="menu-button">
-      <div class="icon-wrapper tg-bg">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.53 4.36-1.8 4.85-1.8.11 0 .35.03.5.16.13.12.17.29.18.41 0 .08-.01.24-.02.32z"/>
-        </svg>
+    <a href="https://t.me/Polly_cooking" class="menu-button">
+      <div class="icon-wrapper">
+        <img src="telegram-icon.svg" alt="Telegram">
       </div>
       <span>Написать в Telegram</span>
     </a>
@@ -191,7 +163,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(() => console.log('PWA Ready'));
+      navigator.serviceWorker.register('sw.js').then(() => console.log('PWA Active'));
     }
 
     let deferredPrompt;
