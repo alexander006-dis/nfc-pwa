@@ -1,0 +1,16 @@
+{
+  "name": "Тот самый кусочек",
+  "short_name": "Кусочек",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFA3A5",
+  "theme_color": "#E25E65",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

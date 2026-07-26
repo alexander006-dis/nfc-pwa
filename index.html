@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тот самый кусочек</title>
+  <link rel="manifest" href="manifest.json">
+  <!-- Подключаем шрифт, похожий на оригинальный -->
+  <link href="https://googleapis.com" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFA3A5; /* Тот самый розовый фон */
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    /* Стили заголовка */
+    .header-container {
+      width: 100max;
+      max-width: 400px;
+      margin-bottom: 25px;
+    }
+
+    .title-main {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 0.9;
+      color: #FFF275; /* Ярко-желтый текст */
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .title-sub {
+      font-size: 14px;
+      font-weight: 700;
+      color: #E25E65; /* Темно-розовый текст */
+      text-transform: uppercase;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Нативная кнопка добавления ярлыка (PWA) */
+    #installBtn {
+      display: none; /* Скрыта по умолчанию, пока браузер не одобрит PWA */
+      width: 100%;
+      max-width: 400px;
+      background-color: #E25E65;
+      color: #FFF275;
+      border: none;
+      padding: 16px;
+      border-radius: 18px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    /* Стили контейнера кнопок-ссылок */
+    .links-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Базовый стиль для кнопок меню */
+    .menu-button {
+      display: flex;
+      align-items: center;
+      background-color: #FFF275; /* Желтый фон кнопок */
+      color: #E25E65; /* Цвет текста */
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 18px; /* Сильное скругление углов */
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.1s ease;
+    }
+
+    .menu-button:active {
+      transform: scale(0.98);
+    }
+
+    /* Иконки внутри кнопок */
+    .menu-button img, .menu-button .icon-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 15px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    /* Если иконок-картинок пока нет, используем заглушки с эмодзи */
+    .icon-placeholder {
+      background-color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Заголовок как на Тильде -->
+  <div class="header-container">
+    <h1 class="title-main">ТОТ<br>САМЫЙ<br>КУСО<br>ЧЕК</h1>
+    <p class="title-sub">КОТОРЫЙ МОЖНО!</p>
+  </div>
+
+  <!-- Умная кнопка установки PWA -->
+  <button id="installBtn">✨ ДОБАВИТЬ НА РАБОЧИЙ СТОЛ</button>
+
+  <!-- Список ваших ссылок -->
+  <div class="links-container">
+    
+    <!-- Кнопка 1 (с аватаркой вместо иконки) -->
+    <a href="#" class="menu-button">
+      <!-- Замените avatar.png на ваше фото в репозитории -->
+      <img src="avatar.png" alt="О проекте" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="icon-placeholder" style="display:none;">👩</div>
+      <span>О проекте</span>
+    </a>
+
+    <!-- Кнопка 2 -->
+    <a href="ССЫЛКА_НА_ВАШ_КАНАЛ" class="menu-button">
+      <div class="icon-placeholder">💬</div>
+      <span>Перейти в канал MAX</span>
+    </a>
+
+    <!-- Кнопка 3 -->
+    <a href="ССЫЛКА_НА_ТЕЛЕГРАМ" class="menu-button">
+      <div class="icon-placeholder">✈️</div>
+      <span>Перейти в канал Telegram</span>
+    </a>
+
+    <!-- Кнопка 4 -->
+    <a href="ССЫЛКА_НА_MAX" class="menu-button">
+      <div class="icon-placeholder">💬</div>
+      <span>Написать в MAX</span>
+    </a>
+
+    <!-- Кнопка 5 -->
+    <a href="ССЫЛКА_НА_ЛИЧКУ_ТГ" class="menu-button">
+      <div class="icon-placeholder">✈️</div>
+      <span>Написать в Telegram</span>
+    </a>
+
+  </div>
+
+  <!-- Логика работы PWA-кнопки -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Active'));
+    }
+
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // Как только браузер подтвердил готовность PWA, плавно показываем кнопку установки
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response: ${outcome}`);
+        deferredPrompt = null;
+        installBtn.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
