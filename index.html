@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Тот самый кусочек</title>
   <link rel="manifest" href="manifest.json">
-  <!-- Подключаем шрифт, похожий на оригинальный -->
   <link href="https://googleapis.com" rel="stylesheet">
   
   <style>
@@ -16,86 +15,70 @@
     }
 
     body {
-      background-color: #FFA3A5; /* Тот самый розовый фон */
+      background-color: #FFA4A6; /* Точный розовый цвет фона */
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 30px 20px;
+      padding: 25px 16px;
     }
 
-    /* Стили заголовка */
-    .header-container {
-      width: 100max;
-      max-width: 400px;
-      margin-bottom: 25px;
-    }
-
-    .title-main {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 42px;
-      font-weight: 900;
-      line-height: 0.9;
-      color: #FFF275; /* Ярко-желтый текст */
-      text-transform: uppercase;
-      letter-spacing: -1px;
-    }
-
-    .title-sub {
-      font-size: 14px;
-      font-weight: 700;
-      color: #E25E65; /* Темно-розовый текст */
-      text-transform: uppercase;
-      margin-top: 5px;
-      letter-spacing: 0.5px;
-    }
-
-    /* Нативная кнопка добавления ярлыка (PWA) */
-    #installBtn {
-      display: none; /* Скрыта по умолчанию, пока браузер не одобрит PWA */
+    /* Контейнер для картинки-заголовка */
+    .header-image-container {
       width: 100%;
-      max-width: 400px;
-      background-color: #E25E65;
+      max-width: 360px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Кнопка установки PWA — яркая, привлекающая внимание */
+    #installBtn {
+      display: none;
+      width: 100%;
+      max-width: 360px;
+      background-color: #E25D65;
       color: #FFF275;
       border: none;
       padding: 16px;
-      border-radius: 18px;
-      font-size: 16px;
-      font-weight: 700;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       cursor: pointer;
       margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: pulse 2s infinite;
+      box-shadow: 0 4px 12px rgba(226, 93, 101, 0.3);
+      text-transform: uppercase;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
-    }
-
-    /* Стили контейнера кнопок-ссылок */
+    /* Контейнер списка кнопок */
     .links-container {
       width: 100%;
-      max-width: 400px;
+      max-width: 360px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    /* Базовый стиль для кнопок меню */
+    /* Абсолютно точная копия кнопок с тильды */
     .menu-button {
       display: flex;
       align-items: center;
-      background-color: #FFF275; /* Желтый фон кнопок */
-      color: #E25E65; /* Цвет текста */
+      background-color: #FFE677; /* Точный пастельно-желтый цвет кнопок */
+      color: #D6545A; /* Точный цвет текста */
       text-decoration: none;
-      padding: 14px 20px;
-      border-radius: 18px; /* Сильное скругление углов */
+      padding: 14px 18px;
+      border-radius: 20px; /* Фирменное скругление */
       font-size: 16px;
       font-weight: 500;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
       transition: transform 0.1s ease;
     }
 
@@ -103,79 +86,112 @@
       transform: scale(0.98);
     }
 
-    /* Иконки внутри кнопок */
-    .menu-button img, .menu-button .icon-placeholder {
-      width: 36px;
-      height: 36px;
+    /* Стили для круглых иконок слева */
+    .icon-wrapper {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      margin-right: 15px;
+      margin-right: 16px;
       flex-shrink: 0;
-      object-fit: cover;
-    }
-
-    /* Если иконок-картинок пока нет, используем заглушки с эмодзи */
-    .icon-placeholder {
-      background-color: #FFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      overflow: hidden;
+      background-color: #FFF;
+    }
+
+    /* Иконка Телеграма — кастомный розовый фон */
+    .icon-wrapper.tg-bg {
+      background-color: #FFA4A6;
+    }
+
+    /* Иконка MAX — точно как на скрине */
+    .icon-wrapper.max-bg {
+      background-color: #FFA4A6;
+    }
+
+    .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+      fill: #FFF;
     }
   </style>
 </head>
 <body>
 
-  <!-- Заголовок как на Тильде -->
-  <div class="header-container">
-    <h1 class="title-main">ТОТ<br>САМЫЙ<br>КУСО<br>ЧЕК</h1>
-    <p class="title-sub">КОТОРЫЙ МОЖНО!</p>
+  <!-- Заголовок-картинка -->
+  <div class="header-image-container">
+    <!-- Замените header.png на имя вашего файла с картинкой текста -->
+    <img src="header.png" alt="Тот самый кусочек, который можно!">
   </div>
 
-  <!-- Умная кнопка установки PWA -->
-  <button id="installBtn">✨ ДОБАВИТЬ НА РАБОЧИЙ СТОЛ</button>
+  <!-- Кнопка добавления PWA -->
+  <button id="installBtn">✨ Добавить на рабочий стол</button>
 
-  <!-- Список ваших ссылок -->
+  <!-- Список кнопок -->
   <div class="links-container">
     
-    <!-- Кнопка 1 (с аватаркой вместо иконки) -->
+    <!-- 1. О проекте (с аватаркой) -->
     <a href="#" class="menu-button">
-      <!-- Замените avatar.png на ваше фото в репозитории -->
-      <img src="avatar.png" alt="О проекте" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <div class="icon-placeholder" style="display:none;">👩</div>
+      <div class="icon-wrapper">
+        <img src="avatar.png" alt="О проекте">
+      </div>
       <span>О проекте</span>
     </a>
 
-    <!-- Кнопка 2 -->
-    <a href="ССЫЛКА_НА_ВАШ_КАНАЛ" class="menu-button">
-      <div class="icon-placeholder">💬</div>
+    <!-- 2. Перейти в канал MAX -->
+    <a href="ССЫЛКА_НА_КАНАЛ_MAX" class="menu-button">
+      <div class="icon-wrapper max-bg">
+        <!-- SVG-копия иконки Q со скриншота -->
+        <svg viewBox="0 0 24 24" style="width:24px; height:24px;">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.31 0 4.43-.79 6.13-2.1l2.58 2.58 1.41-1.41-2.58-2.58C21.21 16.43 22 14.31 22 12 22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+        </svg>
+      </div>
       <span>Перейти в канал MAX</span>
     </a>
 
-    <!-- Кнопка 3 -->
-    <a href="ССЫЛКА_НА_ТЕЛЕГРАМ" class="menu-button">
-      <div class="icon-placeholder">✈️</div>
+    <!-- 3. Перейти в канал Telegram -->
+    <a href="ССЫЛКА_НА_КАНАЛ_ТГ" class="menu-button">
+      <div class="icon-wrapper tg-bg">
+        <!-- Нативный SVG самолетика Телеграм -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.53 4.36-1.8 4.85-1.8.11 0 .35.03.5.16.13.12.17.29.18.41 0 .08-.01.24-.02.32z"/>
+        </svg>
+      </div>
       <span>Перейти в канал Telegram</span>
     </a>
 
-    <!-- Кнопка 4 -->
-    <a href="ССЫЛКА_НА_MAX" class="menu-button">
-      <div class="icon-placeholder">💬</div>
+    <!-- 4. Написать в MAX -->
+    <a href="ССЫЛКА_НА_ЛИЧКУ_MAX" class="menu-button">
+      <div class="icon-wrapper max-bg">
+        <svg viewBox="0 0 24 24" style="width:24px; height:24px;">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.31 0 4.43-.79 6.13-2.1l2.58 2.58 1.41-1.41-2.58-2.58C21.21 16.43 22 14.31 22 12 22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+        </svg>
+      </div>
       <span>Написать в MAX</span>
     </a>
 
-    <!-- Кнопка 5 -->
+    <!-- 5. Написать в Telegram -->
     <a href="ССЫЛКА_НА_ЛИЧКУ_ТГ" class="menu-button">
-      <div class="icon-placeholder">✈️</div>
+      <div class="icon-wrapper tg-bg">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.53 4.36-1.8 4.85-1.8.11 0 .35.03.5.16.13.12.17.29.18.41 0 .08-.01.24-.02.32z"/>
+        </svg>
+      </div>
       <span>Написать в Telegram</span>
     </a>
 
   </div>
 
-  <!-- Логика работы PWA-кнопки -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(() => console.log('Service Worker Active'));
+      navigator.serviceWorker.register('sw.js').then(() => console.log('PWA Ready'));
     }
 
     let deferredPrompt;
@@ -184,7 +200,6 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      // Как только браузер подтвердил готовность PWA, плавно показываем кнопку установки
       installBtn.style.display = 'block';
     });
 
@@ -192,7 +207,6 @@
       if (deferredPrompt) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response: ${outcome}`);
         deferredPrompt = null;
         installBtn.style.display = 'none';
       }
